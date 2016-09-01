@@ -21,10 +21,9 @@ func (this Int32List) ToString() string {
 	return strings.Join(this.ToStringList(), SEPARATE)
 }
 
-func (this Int32List) ToStringList() []string {
-	strList := make([]string, len(this))
-	for idx, i32Obj := range this {
-		strList[idx] = i32Obj.ToString()
+func (this Int32List) ToStringList() (strList []string) {
+	for _, obj := range this {
+		strList = append(strList, obj.ToString())
 	}
-	return strList
+	return
 }

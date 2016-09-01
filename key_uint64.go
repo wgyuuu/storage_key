@@ -21,10 +21,9 @@ func (this Uint64List) ToString() string {
 	return strings.Join(this.ToStringList(), SEPARATE)
 }
 
-func (this Uint64List) ToStringList() []string {
-	strList := make([]string, len(this))
-	for idx, u64Obj := range this {
-		strList[idx] = u64Obj.ToString()
+func (this Uint64List) ToStringList() (strList []string) {
+	for _, obj := range this {
+		strList = append(strList, obj.ToString())
 	}
-	return strList
+	return
 }

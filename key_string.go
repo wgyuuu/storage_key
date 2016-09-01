@@ -12,16 +12,22 @@ func (this String) ToStringList() []string {
 	return []string{this.ToString()}
 }
 
+func (this String) ToSum() (value int) {
+	for _, byt := range this {
+		value += int(byt)
+	}
+	return
+}
+
 type StringList []String
 
 func (this StringList) ToString() string {
 	return strings.Join(this.ToStringList(), SEPARATE)
 }
 
-func (this StringList) ToStringList() []string {
-	strList := make([]string, len(this))
-	for idx, strObj := range this {
-		strList[idx] = strObj.ToString()
+func (this StringList) ToStringList() (strList []string) {
+	for _, obj := range this {
+		strList = append(strList, obj.ToString())
 	}
-	return strList
+	return
 }

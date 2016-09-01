@@ -5,23 +5,23 @@ import (
 	"strings"
 )
 
-type Int64 int64
+type Int8 int8
 
-func (this Int64) ToString() string {
+func (this Int8) ToString() string {
 	return strconv.Itoa(int(this))
 }
 
-func (this Int64) ToStringList() []string {
+func (this Int8) ToStringList() []string {
 	return []string{this.ToString()}
 }
 
-type Int64List []Int64
+type Int8List []Int8
 
-func (this Int64List) ToString() string {
+func (this Int8List) ToString() string {
 	return strings.Join(this.ToStringList(), SEPARATE)
 }
 
-func (this Int64List) ToStringList() (strList []string) {
+func (this Int8List) ToStringList() (strList []string) {
 	for _, obj := range this {
 		strList = append(strList, obj.ToString())
 	}
