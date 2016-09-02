@@ -20,37 +20,37 @@ func (this KeyList) ToStringList() []string {
 	for idx, keyObj := range this {
 		strList[idx] = keyObj.ToString()
 	}
-    return strList
+	return strList
 }
 
 func NewKeyForString(data string) Key {
-    index := strings.Index(data, SEPARATE)
-    if index == -1 {
-        return String(data)
-    }
+	index := strings.Index(data, SEPARATE)
+	if index == -1 {
+		return String(data)
+	}
 
-    strList := strings.Split(data, SEPARATE)
-    return KeyListForStrList(strList)
+	strList := strings.Split(data, SEPARATE)
+	return KeyListForStrList(strList)
 }
 
 func KeyListForStrList(strList []string) KeyList {
-    keyList := make([]Key, len(strList))
-    for k, str := range strList {
-        keyList[k] = String(str)
-    }
-    return NewKeyList(keyList...)
+	keyList := make([]Key, len(strList))
+	for k, str := range strList {
+		keyList[k] = String(str)
+	}
+	return NewKeyList(keyList...)
 }
 
 func NewKeyList(key ...Key) KeyList {
-    return KeyList(key)
+	return KeyList(key)
 }
 
 func AppendKey(keyList KeyList, key Key) KeyList {
-    for _, k := range keyList {
-        if k == key {
-            return keyList
-        }
-    }
-    keyList = append(keyList, key)
-    return keyList
+	for _, k := range keyList {
+		if k.ToString() == key.ToString() {
+			return keyList
+		}
+	}
+	keyList = append(keyList, key)
+	return keyList
 }
